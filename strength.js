@@ -1,0 +1,1 @@
+A password strength analyzer module that checks for lowercase letters, uppercase letters, numbers, special characters, and length requirements.
