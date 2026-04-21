@@ -1,1 +1,68 @@
-A beautiful password security tool with tabs for checking password strength, hashing passwords, and verifying hashes with real-time feedback and color-coded strength indicators.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Security Tool</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px; }
+        h1 { text-align: center; }
+        .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input[type="text"], input[type="password"] { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; }
+        button { background-color: #28a745; color: white; border: none; padding: 10px; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #218838; }
+        .strength { margin-top: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Password Security Tool</h1>
+        <h2>Password Strength Checker</h2>
+        <input type="text" id="passwordInput" placeholder="Enter Password" />
+        <button onclick="checkStrength()">Check Strength</button>
+        <div class="strength" id="strengthOutput"></div>
+        <h2>Hasher</h2>
+        <input type="text" id="hashInput" placeholder="Enter Text to Hash" />
+        <button onclick="hashText()">Hash</button>
+        <div id="hashOutput"></div>
+        <h2>Verifier</h2>
+        <input type="text" id="verifyInput" placeholder="Enter Hash" />
+        <input type="password" id="verifyPassword" placeholder="Enter Password for Verification" />
+        <button onclick="verifyHash()">Verify</button>
+        <div id="verifyOutput"></div>
+    </div>
+    <script>
+        function checkStrength() {
+            const password = document.getElementById('passwordInput').value;
+            const strengthOutput = document.getElementById('strengthOutput');
+            let strength = 'Weak';
+            if (password.length > 8) {
+                strength = 'Moderate';
+                if (/[A-Z]/.test(password) && /[0-9]/.test(password)) {
+                    strength = 'Strong';
+                }
+            }
+            strengthOutput.textContent = 'Password Strength: ' + strength;
+        }
+
+        function hashText() {
+            const text = document.getElementById('hashInput').value;
+            const hashOutput = document.getElementById('hashOutput');
+            const hash = btoa(text); // Simple Base64 encoding as a placeholder for hashing
+            hashOutput.textContent = 'Hash: ' + hash;
+        }
+
+        function verifyHash() {
+            const hash = document.getElementById('verifyInput').value;
+            const password = document.getElementById('verifyPassword').value;
+            const expectedHash = btoa(password); // Simulate previously hashed password
+            const verifyOutput = document.getElementById('verifyOutput');
+            if (hash === expectedHash) {
+                verifyOutput.textContent = 'Verification Successful!';
+            } else {
+                verifyOutput.textContent = 'Verification Failed!';
+            }
+        }
+    </script>
+</body>
+</html>
