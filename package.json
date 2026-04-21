@@ -1,11 +1,1 @@
-{
-  "name": "hashing-program",
-  "version": "1.0.0",
-  "description": "A CLI tool for password hashing",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "code457890",
-  "license": "ISC"
-}
+{\n  "name": "password-hashing-system",\n  "version": "1.0.0",\n  "description": "A web-based password hashing system using bcrypt and express",\n  "main": "index.js",\n  "scripts": {\n    "test": "echo 'Error: no test specified' && exit 1"\n  },\n  "dependencies": {\n    "bcrypt": "^5.0.1",\n    "express": "^4.17.1"\n  }\n}
